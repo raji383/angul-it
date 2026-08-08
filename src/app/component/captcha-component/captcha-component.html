@@ -1,0 +1,25 @@
+<section class="captcha-card">
+    <div class="captcha-header">
+        <span class="captcha-label">CAPTCHA CHALLENGE</span>
+        <h2>Solve the equation</h2>
+    </div>
+
+    <div class="equation">
+        5 × 3 + 2
+    </div>
+
+    <div class="answer-area">
+        <input type="text" placeholder="Enter your answer" [(ngModel)]="userAnswer" (keyup.enter)="checkAnswer()" />
+
+        <button (click)="checkAnswer()">
+            Submit
+        </button>
+    </div>
+
+    <p class="feedback" [class.correct]="isCorrect === true" [class.incorrect]="isCorrect === false"
+        *ngIf="isCorrect !== null">
+        {{ isCorrect ? '✓ Correct!' : '✕ Incorrect. Please try again.' }}
+        <button *ngIf="isCorrect" (click)="nextlevel()">Next Level -></button>
+    </p>
+
+</section>

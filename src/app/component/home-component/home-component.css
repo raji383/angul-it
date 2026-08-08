@@ -1,0 +1,244 @@
+.hero {
+    width: 100%;
+    min-height: 70vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px 24px;
+
+    color: #ffffff;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 650px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+    margin: 0;
+
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -3px;
+
+    line-height: 1;
+}
+
+.title span {
+    color: #22d3ee;
+}
+
+.title-line {
+    width: 60px;
+    height: 4px;
+
+    background: #22d3ee;
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.7);
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: #9ca3af;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+
+    margin-top: 10px;
+}
+
+.btn {
+    width: 150px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Start */
+
+.btn-start {
+    border: none;
+
+    background: #22d3ee;
+
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+.btn-start:hover {
+    background: #67e8f9;
+
+    box-shadow:
+        0 10px 35px rgba(34, 211, 238, 0.4);
+}
+
+/* Resume */
+
+.btn-resume {
+    border: 1px solid #374151;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #ffffff;
+}
+
+.btn-resume:hover {
+    border-color: #22d3ee;
+
+    background: rgba(34, 211, 238, 0.08);
+
+    box-shadow:
+        0 8px 25px rgba(34, 211, 238, 0.12);
+}
+
+/* Arrow */
+
+.arrow {
+    transition: transform 0.25s ease;
+}
+
+.btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 8px;
+
+    color: #6b7280;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+
+    animation: pulse 1.5s infinite;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 80vh;
+        padding: 30px 20px;
+    }
+
+    .hero-content {
+        gap: 22px;
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .description {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}

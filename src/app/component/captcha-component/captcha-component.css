@@ -1,0 +1,212 @@
+.captcha-card {
+    width: min(90%, 480px);
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+}
+
+/* Header */
+
+.captcha-header {
+    text-align: center;
+}
+
+.captcha-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #22d3ee;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.captcha-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Equation */
+
+.equation {
+    width: 100%;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(34, 211, 238, 0.15);
+
+    color: #22d3ee;
+
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    box-sizing: border-box;
+}
+
+/* Input + Button */
+
+.answer-area {
+    width: 100%;
+
+    display: flex;
+
+    gap: 12px;
+}
+
+.answer-area input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 13px 15px;
+
+    border: 1px solid #374151;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: white;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.answer-area input::placeholder {
+    color: #6b7280;
+}
+
+.answer-area input:focus {
+    border-color: #22d3ee;
+
+    box-shadow:
+        0 0 0 3px rgba(34, 211, 238, 0.1);
+}
+
+/* Submit */
+
+button {
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #22d3ee;
+
+    color: #031014;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.answer-area button:hover {
+    background: #67e8f9;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(34, 211, 238, 0.25);
+}
+
+.answer-area button:active {
+    transform: translateY(0);
+}
+
+/* Feedback */
+
+.feedback {
+    width: 100%;
+
+    margin: 0;
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.feedback.correct {
+    color: #4ade80;
+
+    background: rgba(74, 222, 128, 0.08);
+
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.feedback.incorrect {
+    color: #f87171;
+
+    background: rgba(248, 113, 113, 0.08);
+
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .captcha-card {
+        padding: 25px 20px;
+    }
+
+    .equation {
+        font-size: 30px;
+    }
+
+    .answer-area {
+        flex-direction: column;
+    }
+
+    .answer-area input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .answer-area button {
+        height: 45px;
+    }
+}
