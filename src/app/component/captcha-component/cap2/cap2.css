@@ -1,0 +1,298 @@
+.captcha-section {
+    width: min(92%, 650px);
+    margin: 0 auto;
+    padding: 30px 20px;
+
+    color: #fff;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.captcha-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.captcha-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #22d3ee;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.captcha-header h3 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.captcha-header p {
+    margin: 10px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+/* =========================
+   IMAGE GRID
+========================= */
+
+.captcha-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+/* =========================
+   IMAGE CARD
+========================= */
+
+.captcha-image {
+    position: relative;
+
+    display: block;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    border: 2px solid transparent;
+
+    background: #111827;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.captcha-image:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(34, 211, 238, 0.5);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.captcha-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.captcha-image:hover img {
+    transform: scale(1.04);
+}
+
+/* =========================
+   HIDE CHECKBOX
+========================= */
+
+.captcha-image input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+/* =========================
+   CHECKMARK
+========================= */
+
+.checkmark {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    border: 2px solid rgba(255, 255, 255, 0.7);
+
+    color: transparent;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* =========================
+   SELECTED IMAGE
+========================= */
+
+.captcha-image:has(input:checked) {
+    border-color: #22d3ee;
+
+    box-shadow:
+        0 0 0 2px rgba(34, 211, 238, 0.15),
+        0 10px 30px rgba(34, 211, 238, 0.15);
+}
+
+.captcha-image:has(input:checked) img {
+    filter: brightness(0.7);
+}
+
+.captcha-image:has(input:checked) .checkmark {
+    background: #22d3ee;
+
+    border-color: #22d3ee;
+
+    color: #031014;
+
+    transform: scale(1.05);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .captcha-section {
+        padding: 20px 10px;
+    }
+
+    .captcha-header h3 {
+        font-size: 18px;
+    }
+
+    .captcha-header p {
+        font-size: 11px;
+    }
+
+    .captcha-grid {
+        gap: 10px;
+    }
+
+    .checkmark {
+        top: 7px;
+        right: 7px;
+
+        width: 24px;
+        height: 24px;
+
+        font-size: 13px;
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+
+    .captcha-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+button {
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #22d3ee;
+
+    color: #031014;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.answer-area button:hover {
+    background: #67e8f9;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(34, 211, 238, 0.25);
+}
+
+.answer-area button:active {
+    transform: translateY(0);
+}
+
+/* Feedback */
+
+.feedback {
+    width: 100%;
+
+    margin: 0;
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.feedback.correct {
+    color: #4ade80;
+
+    background: rgba(74, 222, 128, 0.08);
+
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.feedback.incorrect {
+    color: #f87171;
+
+    background: rgba(248, 113, 113, 0.08);
+
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}

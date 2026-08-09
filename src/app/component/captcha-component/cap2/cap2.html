@@ -1,1 +1,34 @@
-<p>cap2 works!</p>
+<section class="captcha-section" animate.enter="enter-animation">
+    <div class="captcha-header">
+        <span class="captcha-label">CAPTCHA CHALLENGE</span>
+        <h3>
+            Select all images with cats
+        </h3>
+        <p>
+            Choose every image that contains a cat.
+        </p>
+    </div>
+    <form [formGroup]="form" class="captcha-grid">
+        @for (img of image(); track $index) {
+        <label class="captcha-image">
+            <img [src]="'./img/' + img" alt="Captcha Image" />
+            <input type="checkbox" [formControlName]="'option' + ($index + 1)" />
+            <span class="checkmark">✓</span>
+        </label>
+        }
+        <button (click)="checkAnswer()">
+            Submit
+        </button>
+    </form>
+    @if (isCorrect !== null) {
+    <p class="feedback" [class.correct]="isCorrect === true" [class.incorrect]="isCorrect === false">
+        {{ isCorrect ? '✓ Correct!' : '✕ Incorrect. Please try again.' }}
+
+        @if (isCorrect) {
+        <button type="button" (click)="nextlevel()">
+            Next Level →
+        </button>
+        }
+    </p>
+    }
+</section>

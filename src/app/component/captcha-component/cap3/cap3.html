@@ -1,1 +1,14 @@
-<p>cap3 works!</p>
+<section class="captch">
+    <form [formGroup]="form">
+        <div id="captcha"> </div>
+        <input type="text" placeholder="Enter CAPTCHA" formControlName="userAnswer">
+        <button (click)="checkAnswer()">
+            Submit
+        </button>
+    </form>
+    @if (isCorrect !== null) {
+    <p class="feedback" [class.correct]="isCorrect === true" [class.incorrect]="isCorrect === false">
+        {{ isCorrect ? '✓ Correct!' : '✕ Incorrect. Please try again.' }}
+    </p>
+    }
+</section>
