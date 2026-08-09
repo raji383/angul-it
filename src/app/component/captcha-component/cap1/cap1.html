@@ -19,7 +19,7 @@
     <p class="feedback" [class.correct]="isCorrect === true" [class.incorrect]="isCorrect === false"
         *ngIf="isCorrect !== null">
         {{ isCorrect ? '✓ Correct!' : '✕ Incorrect. Please try again.' }}
-        <button *ngIf="isCorrect" (click)="nextlevel()">Next Level -></button>
+        <button *ngIf="isCorrect" (click)="nextlevel()">Next Level  →</button>
     </p>
 
 </section>

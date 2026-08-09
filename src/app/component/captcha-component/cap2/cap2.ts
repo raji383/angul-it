@@ -36,4 +36,7 @@ export class Cap2 {
   nextlevel() {
     this.captchaState.setLevel(this.captchaState.getLevel() + 1);
   }
+  previouslevel() {
+    this.captchaState.setLevel(this.captchaState.getLevel() - 1);
+  }
 }

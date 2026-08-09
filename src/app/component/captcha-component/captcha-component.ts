@@ -15,6 +15,8 @@ export class CaptchaComponent {
   private captchaState = inject(CaptchaService)
 
   getsection(num: number) {
+    console.log(this.captchaState.getLevel());
+    
     return num === this.captchaState.getLevel() ;
   }
 }

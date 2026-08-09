@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CaptchaService } from '../../../service/captcha-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cap3',
@@ -11,6 +13,9 @@ export class Cap3 {
   char = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   text = ""
   isCorrect: boolean | null = null;
+  private captchaState = inject(CaptchaService);
+  private router = inject(Router)
+
   form = new FormGroup({
     userAnswer: new FormControl('')
   });
@@ -18,6 +23,12 @@ export class Cap3 {
     const answer = this.form.get('userAnswer')?.value;
 
     this.isCorrect = answer === this.text;
+    if (this.isCorrect) {
+      this.captchaState.setLevel(this.captchaState.getLevel() );
+      if (this.captchaState.isdone()) {
+        this.router.navigateByUrl("/result")
+      }
+    }
   }
 
   ngOnInit() {
@@ -35,5 +46,9 @@ export class Cap3 {
       ctx.strokeText(this.text, 10, 35);
       document.getElementById("captcha")?.appendChild(canva);
     }
+  }
+
+  previouslevel() {
+    this.captchaState.setLevel(this.captchaState.getLevel() - 1);
   }
 }

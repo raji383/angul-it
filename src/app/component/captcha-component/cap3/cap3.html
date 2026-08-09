@@ -10,5 +10,8 @@
     <p class="feedback" [class.correct]="isCorrect === true" [class.incorrect]="isCorrect === false">
         {{ isCorrect ? '✓ Correct!' : '✕ Incorrect. Please try again.' }}
     </p>
+    <button type="button" (click)="previouslevel()">
+        ← previous Level
+    </button>
     }
 </section>

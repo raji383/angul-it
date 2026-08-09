@@ -11,7 +11,9 @@ import { CaptchaService } from '../../service/captcha-service';
 export class HomeComponent {
   private captchaState = inject(CaptchaService)
   private router = inject(Router)
-  captchPage(level?: number) {
+  captchPage() {
+    this.captchaState.saveState()
+    let level = this.captchaState.getLevel()
     if (level) {
       this.captchaState.setLevel(level)
     }

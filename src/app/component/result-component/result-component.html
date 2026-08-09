@@ -1,1 +1,15 @@
-<p>result-component works!</p>
+<div class="result">
+    <h1>🎉 Challenge Completed!</h1>
+
+    <p>
+        You completed {{ totalStages }} challenges.
+    </p>
+
+    <h2>
+        Score: {{ score }}/{{ totalStages*10 }}
+    </h2>
+
+    <button (click)="restart()">
+        Restart Challenge
+    </button>
+</div>
