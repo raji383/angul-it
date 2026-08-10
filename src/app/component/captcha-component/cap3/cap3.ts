@@ -24,7 +24,7 @@ export class Cap3 {
 
     this.isCorrect = answer === this.text;
     if (this.isCorrect) {
-      this.captchaState.setLevel(this.captchaState.getLevel() );
+      this.captchaState.setLevel(this.captchaState.getLevel()+1 );
       if (this.captchaState.isdone()) {
         this.router.navigateByUrl("/result")
       }

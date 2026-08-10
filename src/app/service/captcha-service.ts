@@ -28,7 +28,7 @@ export class CaptchaService {
     );
   }
   setLevel(level: number) {
-    this.state.completedStages.push(level);
+    this.state.completedStages.push(level-1);
     if (level < 1 || level > 3) {
       return;
     }
@@ -42,16 +42,25 @@ export class CaptchaService {
   }
 
   getLevel() {
-    const savedState = localStorage.getItem(this.STORAGE_KEY);
+    try {
 
-    if (savedState) {
-      this.state = JSON.parse(savedState);
-    } else {
+      const savedState = localStorage.getItem(this.STORAGE_KEY);
+
+      if (savedState) {
+        this.state = JSON.parse(savedState);
+      } else {
+        this.router.navigateByUrl("/home")
+
+      }
+      if (!(typeof this.state.completed === 'boolean' && typeof this.state.score === 'number' && Array.isArray(this.state.completedStages) && typeof this.state.currentStage === 'number')) {
+        this.router.navigateByUrl("/home")
+      }
+      if (this.state.currentStage < 1 || this.state.currentStage > 3) {
+        this.restart();
+      }
+    } catch (error) {
       this.router.navigateByUrl("/home")
-
-    }
-    if (this.state.currentStage < 1 || this.state.currentStage > 3) {
-      this.restart();
+      return 0 ;
     }
     return this.state.currentStage;
   }
@@ -68,6 +77,9 @@ export class CaptchaService {
     this.saveState();
   }
   isdone() {
-    return this.state.completedStages.length === 4;
+    if (this.state.completedStages.includes(1) && this.state.completedStages.includes(2) && this.state.completedStages.includes(3)) {
+      return true;
+    }
+    return false;
   }
 }
