@@ -12,6 +12,7 @@ export class HomeComponent {
   private captchaState = inject(CaptchaService)
   private router = inject(Router)
   captchPage() {
+    this.captchaState.restart()
     this.captchaState.saveState()
     let level = this.captchaState.getLevel()
     if (level) {

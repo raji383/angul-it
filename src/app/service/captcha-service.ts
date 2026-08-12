@@ -28,13 +28,17 @@ export class CaptchaService {
     );
   }
   setLevel(level: number) {
-    this.state.completedStages.push(level-1);
-    if (level < 1 || level > 3) {
+    if (!this.state.completedStages.includes(level - 1)) {
+
+      this.state.completedStages.push(level - 1);
+    }
+    if (level < 1 || level > 4) {
       return;
     }
-    this.state.score += 10;
+    this.state.score = (level-1) * 10;
     this.state.currentStage = level;
-    if (this.state.completedStages.length === 3) {
+    if (this.state.completedStages.length === 4) {
+      console.log(this.state.completedStages);
       this.state.completed = true;
     }
     this.saveState();
@@ -55,12 +59,12 @@ export class CaptchaService {
       if (!(typeof this.state.completed === 'boolean' && typeof this.state.score === 'number' && Array.isArray(this.state.completedStages) && typeof this.state.currentStage === 'number')) {
         this.router.navigateByUrl("/home")
       }
-      if (this.state.currentStage < 1 || this.state.currentStage > 3) {
+      if (this.state.currentStage < 1 || this.state.currentStage > 4) {
         this.restart();
       }
     } catch (error) {
       this.router.navigateByUrl("/home")
-      return 0 ;
+      return 0;
     }
     return this.state.currentStage;
   }
@@ -70,7 +74,7 @@ export class CaptchaService {
   restart() {
     this.state = {
       currentStage: 1,
-      completedStages: [],
+      completedStages: [0],
       score: 0,
       completed: false
     };
@@ -81,5 +85,18 @@ export class CaptchaService {
       return true;
     }
     return false;
+  }
+  getcompletedStages() {
+    var c = 0;
+    if (this.state.completedStages.includes(1)) {
+      c++;
+    }
+    if (this.state.completedStages.includes(2)) {
+      c++;
+    }
+    if (this.state.completedStages.includes(3)) {
+      c++;
+    }
+    return c;
   }
 }

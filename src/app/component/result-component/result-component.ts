@@ -16,12 +16,12 @@ export class ResultComponent {
   ngOnInit() {
     
     if (this.captchaState.getLevel() < 3) {
-      this.router.navigateByUrl("/captcha")
+      //this.router.navigateByUrl("/captcha")
     }
     const state = this.captchaState.getState();
 
     this.score = state.score;
-    this.totalStages = state.completedStages.length;
+    this.totalStages = this.captchaState.getcompletedStages();
   }
   restart(): void {
     this.captchaState.restart();
